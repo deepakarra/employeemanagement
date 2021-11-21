@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="employee")
@@ -12,7 +14,11 @@ public class Employee {
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)
 private long employeeid;
+
+@NotEmpty(message = "Employee name cannot be null")
 private String employeeName;
+
+@NotEmpty(message = "city  cannot be null")
 private String city;
 
 public long getEmployeeid() {

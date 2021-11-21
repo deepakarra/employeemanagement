@@ -2,9 +2,12 @@ package com.employee.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,18 +50,18 @@ class EmployeeController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
+	public ResponseEntity<Employee> createEmployee(@Valid  @RequestBody Employee employee) {
 	return new ResponseEntity<Employee>(employeeService.createEmployee(employee),HttpStatus.CREATED);
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deleteEmployee(@PathVariable long id) {
-		employeeService.deleteEmployee(id);
+		employeeService.deleteEmployee(id); 
 		return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Employee> updateEmployee(@PathVariable long  id, @RequestBody Employee employee) {
+	public ResponseEntity<Employee> updateEmployee(@Valid @PathVariable long  id, @RequestBody Employee employee) {
 		Employee updatedEmployee = employeeService.updateEmployee(id, employee);
 		if(null!=updatedEmployee) {
 		return new ResponseEntity<Employee>(updatedEmployee,HttpStatus.OK);
