@@ -11,11 +11,11 @@ import javax.persistence.Table;
 public class Employee {
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)
-private int employeeid;
+private long employeeid;
 private String employeeName;
 private String city;
 
-public int getEmployeeid() {
+public long getEmployeeid() {
 	return employeeid;
 }
 public void setEmployeeid(int employeeid) {
@@ -24,7 +24,7 @@ public void setEmployeeid(int employeeid) {
 public String getEmployeeName() {
 	return employeeName;
 }
-public void setEmployeename(String employeeName) {
+public void setEmployeeName(String employeeName) {
 	this.employeeName = employeeName;
 }
 public String getCity() {
