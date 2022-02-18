@@ -18,6 +18,17 @@ private long employeeid;
 @NotEmpty(message = "Employee name cannot be null")
 private String employeeName;
 
+public Employee() {
+	
+}
+
+public Employee(long employeeid, @NotEmpty(message = "Employee name cannot be null") String employeeName,
+		@NotEmpty(message = "city  cannot be null") String city) {
+	super();
+	this.employeeid = employeeid;
+	this.employeeName = employeeName;
+	this.city = city;
+}
 @NotEmpty(message = "city  cannot be null")
 private String city;
 
