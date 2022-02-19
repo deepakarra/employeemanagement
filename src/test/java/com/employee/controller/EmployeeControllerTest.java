@@ -1,8 +1,7 @@
 package com.employee.controller;
 
-//import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,22 +13,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
-
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.hamcrest.core.Is.is;
 
 import com.employee.model.Employee;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
 public class EmployeeControllerTest {
-	private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 	@Autowired
 	protected MockMvc mvc;
 	
@@ -83,7 +74,6 @@ public class EmployeeControllerTest {
 	@Test
 	@Order(4)
 	public void updatesEmployeeDetailsSuccessfully() throws Exception {
-		String uri = "/employees" ;
 		String updateuri = "/employees/1" ;
 		String newRequestBody = "{\r\n" + "\"employeeName\":\"newEmp\",\r\n" + "\"city\":\"Ams\"\r\n" + "}";
 		mvc.perform(MockMvcRequestBuilders.put(updateuri).contentType(MediaType.APPLICATION_JSON)
